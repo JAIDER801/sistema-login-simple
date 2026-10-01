@@ -60,9 +60,9 @@ def Register():
 def Main():
     while True:
         print("\n--- Sing Up ---")
-        print("\n1. Login")
-        print("\n2. Register")
-        print("\n3. Salir")
+        print("1. Login")
+        print("2. Register")
+        print("3. Salir")
 
         opciones = input("\nElige una de las siguientes opciones, por favor: ").strip()
         if opciones == "1":
