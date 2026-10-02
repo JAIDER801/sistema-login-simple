@@ -27,12 +27,10 @@ def Login():
     Password = input("\nPassword: ").strip()
     elementos_vacios(Password)
 
-    if User_name and Password in data_base:
+    if User_name in data_base and data_base[User_name] == Password:
         print("\n¡Acceso concedido!")
     else:
         print("\nInvalido. El usuario ingresado no existe.")
-
-    return User_name, Password
 
 def Register():
     enter_username = input("\nRegister UserName: ").strip()
@@ -40,22 +38,22 @@ def Register():
 
     if enter_username in data_base:
         print("\nEl nombre de usuario ya existe. Ingrese otro.")
-    else:
-        enter_cellphone_number = input("\nRegister Cellphone Number: ").strip()
-        elementos_vacios(enter_cellphone_number)
+        return
 
-        enter_email = input("\nRegister Email: ").strip()
-        elementos_vacios(enter_email)
+    enter_cellphone_number = input("\nRegister Cellphone Number: ").strip()
+    elementos_vacios(enter_cellphone_number)
+
+    enter_email = input("\nRegister Email: ").strip()
+    elementos_vacios(enter_email)
         
-        enter_password = input("\nRegister Password: ").strip()
-        elementos_vacios(enter_password)
+    enter_password = input("\nRegister Password: ").strip()
+    elementos_vacios(enter_password)
 
     if enter_password in data_base:
         print("\nLa contraseña ya existe. Ingrese otra.")
-    else:
-        data_base[enter_username] = enter_password
+        return
 
-    return enter_username, enter_cellphone_number, enter_email, enter_password
+    data_base[enter_username] = enter_password
 
 def Main():
     while True:
@@ -75,8 +73,8 @@ def Main():
         else:
             print("\nOpción invalida. Eliga una de las opciones existentes.")
 
-        if not continuar_programa():
-            break
+        # if not continuar_programa():
+        #     break
 
 if __name__ == "__main__":
     Main()
